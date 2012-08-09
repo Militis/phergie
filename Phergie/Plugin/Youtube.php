@@ -71,7 +71,7 @@ class Phergie_Plugin_Youtube extends Phergie_Plugin_Abstract
 
         $entries = $json->feed->entry;
         if (!$entries) {
-            $this->doNotice($this->event->getNick(), 'Query returned no results');
+            $this->doPrivmsg($this->event->getSource(), 'Unable to find video info');
             return;
         }
         $entry = reset($entries);
