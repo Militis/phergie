@@ -64,12 +64,12 @@ class Twitter
      */
     protected $pass;
 
-    /**
-     * Twitter OAUTH credentials
-     */
-    protected $usertoken, $usersecret;
-    protected $consumerkey, $consumersecret;
-    public $oauth;
+    // /**
+    //  * Twitter OAUTH credentials
+    //  */
+    // protected $usertoken, $usersecret;
+    // protected $consumerkey, $consumersecret;
+    // public $oauth;
 
     /**
      * Constructor; sets up configuration.
