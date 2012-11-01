@@ -74,4 +74,19 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
     {
         $this->doPrivmsg($this->event->getSource(), 'http://www.quakenet.org/help/q/how-to-register-an-account-with-q');
     }
+    
+    /**
+     * Prints links to Mhykol
+     *
+     *
+     * @return void
+     */
+    public function onCommandMhykol()
+    {
+        $this->doPrivmsg($this->event->getSource(), 'http://www.youtube.com/mhykol');
+        $this->doPrivmsg($this->event->getSource(), 'http://twitter.com/mhykol');
+        $this->doPrivmsg($this->event->getSource(), 'http://www.facebook.com/mhykolmines');
+        $this->doPrivmsg($this->event->getSource(), 'http://www.twitch.tv/mhykol');
+        // $this->doPrivmsg($this->event->getSource(), '');
+    }
 }
