@@ -51,4 +51,27 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
     {
         $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/pages/rules/');
     }
+    
+    /**
+     * Prints link to Ban Appeal
+     *
+     *
+     * @return void
+     */
+    public function onCommandBanappeal()
+    {
+        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/threads/read-before-posting-appeal.1283/');
+        $this->doPrivmsg($this->event->getSource(), 'Create a new topic with your ingame name as the title in this forum: http://mc.mhykol.com/forums/ban-appeals.6/');
+    }
+    
+    /**
+     * Prints link to how to register with Q
+     *
+     *
+     * @return void
+     */
+    public function onCommandTalkinginirc()
+    {
+        $this->doPrivmsg($this->event->getSource(), 'http://www.quakenet.org/help/q/how-to-register-an-account-with-q');
+    }
 }
