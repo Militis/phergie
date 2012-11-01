@@ -71,7 +71,7 @@ class Phergie_Plugin_Youtube extends Phergie_Plugin_Abstract
 
         $entries = $json->feed->entry;
         if (!$entries) {
-            $this->doPrivmsg($this->event->getSource(), 'Unable to find video info');
+            $this->doPrivmsg($this->event->getSource(), 'Unable to find video info. Is it private? Brand new? (YouTube feeds don\'t update right away.)');
             return;
         }
         $entry = reset($entries);
