@@ -587,8 +587,7 @@ class Phergie_Plugin_Url extends Phergie_Plugin_Abstract
         $http = $this->plugins->getPlugin('Http');
         $options = array(
             'timeout' => 3.5,
-            'user_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; ' .
-                'rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12'
+            'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.60 Safari/537.11'
         );
 
         $response = $http->head($url, array(), $options);
