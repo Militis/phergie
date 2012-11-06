@@ -73,6 +73,7 @@ class Phergie_Plugin_Youtube extends Phergie_Plugin_Abstract
         if (!$entries) {
             $url = $this->plugins->getPlugin('Url');
             $link = 'http://youtu.be/' . $query;
+            $this->doPrivmsg($this->event->getSource(), $link);
             $title = $url->getTitle($link);
             $this->doPrivmsg($this->event->getSource(), $title);
             // $this->doPrivmsg($this->event->getSource(), 'Unable to find video info. Is it private? Brand new? (YouTube feeds don\'t update right away.)');
