@@ -51,6 +51,17 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
     {
         $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/pages/rules/');
     }
+
+    /**
+     * Prints link to Ranks
+     *
+     *
+     * @return void
+     */
+    public function onCommandRanks()
+    {
+        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/threads/ranks.1203/');
+    }
     
     /**
      * Prints link to Ban Appeal
