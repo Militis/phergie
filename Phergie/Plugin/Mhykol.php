@@ -105,9 +105,20 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
      */
     public function onCommandTalkinginirc()
     {
-        $this->doPrivmsg($this->event->getSource(), 'http://www.quakenet.org/help/q/how-to-register-an-account-with-q');
+        $this->doPrivmsg($this->event->getSource(), 'http://www.bit.ly/HelloQ');
     }
     
+    /**
+     * Prints link to how to register with Q
+     *
+     *
+     * @return void
+     */
+    public function onCommandIrc()
+    {
+        $this->doPrivmsg($this->event->getSource(), 'http://www.bit.ly/HelloQ');
+    }
+
     /**
      * Prints links to Mhykol
      *
