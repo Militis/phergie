@@ -63,9 +63,6 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
         $response = $http->get($url, $params);
         $json = $response->getContent();
         
-        $this->doPrivmsg($this->event->getSource(), print_r($json, true));
-        return;
-
         if ($json->Response == 'False') {
             $this->doPrivmsg($this->event->getSource(), $json->Error);
             return;
@@ -74,9 +71,8 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
         $nick = $this->event->getNick();
         $imdbid = $json->imdbID;
         $title = $json->Title;
-        $link = 'http://www.imdb.com/title/' . $imdbid;
+        $link = 'http://www.imdb.com/title/' . $imdbid . '/';
         
-        $this->doPrivmsg($this->event->getSource(), 'IMDB results:');
         $msg = "[ $link ] $title";
         $this->doPrivmsg($this->event->getSource(), $msg);
     }
