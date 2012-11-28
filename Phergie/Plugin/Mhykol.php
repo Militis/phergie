@@ -12,11 +12,11 @@
  * http://phergie.org/license
  *
  * @category  Phergie
- * @package   Phergie_Plugin_Join
- * @author    Phergie Development Team <team@phergie.org>
- * @copyright 2008-2012 Phergie Development Team (http://phergie.org)
+ * @package   Phergie_Plugin_Mhykol
+ * @author    MilesMilitis <miles@militis.us>
+ * @copyright 2012 MilesMilitis <http://militis.us>
  * @license   http://phergie.org/license New BSD License
- * @link      http://pear.phergie.org/package/Phergie_Plugin_Join
+ * @link      http://militis.us
  */
 
 /**
