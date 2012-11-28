@@ -61,13 +61,7 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
         );
         $http = $this->plugins->getPlugin('Http');
         $response = $http->get($url, $params);
-        $json = $response->getContent();
-        
-        foreach ($json as $key => $value)
-        {
-            $this->doPrivmsg($this->event->getSource(), "$key => $value");
-        }
-        return;
+        $json = json_decode($response->getContent());
         
         if ($json->Response == 'False') {
             $this->doPrivmsg($this->event->getSource(), $json->Error);
