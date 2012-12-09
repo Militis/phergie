@@ -133,4 +133,15 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
         $this->doPrivmsg($this->event->getSource(), 'http://www.twitch.tv/mhykol');
         // $this->doPrivmsg($this->event->getSource(), '');
     }
+    
+    /**
+     * Prints links to Lotion
+     *
+     *
+     * @return void
+     */
+    public function onCommandLotion()
+    {
+        $this->doPrivmsg($this->event->getSource(), 'http://www.imdb.com/title/tt0102926/quotes?qt=qt0334795');
+    }
 }
