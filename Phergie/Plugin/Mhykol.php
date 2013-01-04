@@ -116,7 +116,18 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
      */
     public function onCommandIrc()
     {
-        $this->doPrivmsg($this->event->getSource(), 'http://www.bit.ly/HelloQ');
+        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/pages/chat/');
+    }
+    
+    /**
+     * Prints link to Dynamic Map
+     *
+     *
+     * @return void
+     */
+    public function onCommandMap()
+    {
+        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/pages/map/');
     }
 
     /**
