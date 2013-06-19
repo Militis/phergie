@@ -114,6 +114,18 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
     }
     
     /**
+     * Output a debug message
+     *
+     * @param string $msg the message to output
+     *
+     * @return void
+     */
+    protected function debug($msg)
+    {
+        echo "(DEBUG:Url) $msg\n";
+    }
+    
+    /**
      * Prints MC Status
      *
      *
@@ -122,7 +134,7 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
     public function onCommandMcstatus()
     {
         $status = $this->getStatus();
-        echo $status;
+        $this->debug($status);
         
         $this->doPrivmsg($this->event->getSource(), $status);
     }
