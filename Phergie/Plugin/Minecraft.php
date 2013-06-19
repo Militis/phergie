@@ -106,7 +106,7 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
         ) {
             $status = $this->checkStatus();
             $this->lastPing = $time;
-            if ($status !== TRUE)
+            if ($status != 'All Mojang services appear to be up.')
             {
                 $this->doPrivmsg($this->getConfig('status.channels'), $status);
             }
@@ -124,11 +124,6 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
         $status = $this->getStatus();
         echo $status;
         
-        if ($status == TRUE)
-        {
-            $this->doPrivmsg($this->event->getSource(), 'All Mojang services appear to be up.');
-            return;
-        }
         $this->doPrivmsg($this->event->getSource(), $status);
     }
     
@@ -238,14 +233,14 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
                 return 'The following Mojang Services appear to be down: '.implode(';', $down);
             }
             
-            return TRUE; // Services are all up.
+            return 'All Mojang services appear to be up.';
         }
         else
         {
             return 'Unable to fetch status from http://help.mojang.com/ Might want to check http://xpaw.ru/mcstatus/';
         }
         
-        return FALSE; // What the fuck happened here?
+        return ''; // What the fuck happened here?
     }
     
 }
