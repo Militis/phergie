@@ -122,7 +122,7 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
      */
     protected function debug($msg)
     {
-        echo "(DEBUG:Url) $msg\n";
+        echo "(DEBUG:Minecraft) $msg\n";
     }
     
     /**
@@ -203,19 +203,8 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
         if ($response->getCode() == 405) { // HEAD request method not allowed
             $response = $this->http->get($this->statusUrl, array(), $options);
         }
-
-        $header = $response->getHeaders('Content-Type');
-        $matches = preg_match(
-            '#^(application/json)(?:;.*)?$#',
-            $header
-        );
         
-        if ($matches)
-        {
-            return $response->getContent();
-        }
-        
-        return json_encode(array());
+        return $response->getContent();
     }
     
     /**
