@@ -74,6 +74,7 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
      */
     public function onLoad()
     {
+        $this->getPluginHandler()->getPlugin('Command');
         $this->plugins->getPlugin('Cache');
         $this->cache = $this->plugins->cache;
         $this->plugins->getPlugin('Http');
@@ -110,6 +111,24 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
                 $this->doPrivmsg($this->getConfig('status.channels'), $status);
             }
         }
+    }
+    
+    /**
+     * Prints MC Status
+     *
+     *
+     * @return void
+     */
+    public function onCommandMcstatus()
+    {
+        $status = $this->getStatus();
+        
+        if ($status == TRUE)
+        {
+            $this->doPrivmsg($this->event->getSource(), 'All Mojang services appear to be up.');
+            return;
+        }
+        $this->doPrivmsg($this->event->getSource(), $status);
     }
     
     /**
