@@ -215,6 +215,8 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
         }
         $this->debug($response);
         
+        $this->debug($response->getContent());
+        
         return $response->getContent();
     }
     
