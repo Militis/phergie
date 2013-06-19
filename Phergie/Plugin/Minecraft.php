@@ -208,16 +208,23 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
         );
 
         $response = $this->http->head($this->statusUrl, array(), $options);
-        $this->debug($response);
 
         if ($response->getCode() == 405) { // HEAD request method not allowed
             $response = $this->http->get($this->statusUrl, array(), $options);
         }
-        $this->debug($response);
+
+        $header = $response->getHeaders('Content-Type');
+        $matches = preg_match(
+            '#^(application/json)(?:;.*)?$#',
+            $header
+        );
         
-        $this->debug($response->getContent());
+        if ($matches)
+        {
+            return file_get_contents($this->statusUrl);
+        }
         
-        return $response->getContent();
+        return json_encode(array());
     }
     
     /**
