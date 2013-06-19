@@ -122,6 +122,7 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
     public function onCommandMcstatus()
     {
         $status = $this->getStatus();
+        echo $status;
         
         if ($status == TRUE)
         {
