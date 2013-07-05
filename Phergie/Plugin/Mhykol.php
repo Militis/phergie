@@ -146,7 +146,18 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
     }
     
     /**
-     * Prints links to Lotion
+     * Prints link to Reset
+     *
+     *
+     * @return void
+     */
+    public function onCommandReset()
+    {
+        $this->doPrivmsg($this->event->getSource(), 'http://bit.ly/18Bv27p');
+    }
+    
+    /**
+     * Prints link to Lotion
      *
      *
      * @return void
