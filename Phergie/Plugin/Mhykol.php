@@ -157,6 +157,17 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
     }
     
     /**
+     * Prints link to Update
+     *
+     *
+     * @return void
+     */
+    public function onCommandUpdate()
+    {
+        $this->doPrivmsg($this->event->getSource(), 'http://bit.ly/13MH0Jr');
+    }
+    
+    /**
      * Prints link to Lotion
      *
      *
