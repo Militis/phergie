@@ -60,7 +60,18 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
      */
     public function onCommandRanks()
     {
-        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/threads/ranks.1203/');
+        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/pages/ranks/');
+    }
+    
+    /**
+     * Prints link to Griefing Form
+     *
+     *
+     * @return void
+     */
+    public function onCommandGrief()
+    {
+        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/pages/griefreport/');
     }
 
     /**
@@ -109,7 +120,7 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
     }
     
     /**
-     * Prints link to how to register with Q
+     * Prints link to how to chat in IRC
      *
      *
      * @return void
