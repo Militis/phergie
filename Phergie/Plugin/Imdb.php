@@ -90,7 +90,7 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
      */
     public function onCommandImdb($query)
     {
-        $this->queryOmdb(rawurlencode($query));
+        $this->queryOmdb($query);
     }
 
 }
