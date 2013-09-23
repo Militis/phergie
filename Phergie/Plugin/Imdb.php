@@ -78,7 +78,7 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
         }
         
         foreach ($json->Search as $search) {
-            if ($search->Type != 'series' AND $search->Type != 'movie') {
+            if ( ! in_array($search->Type, ['series', 'movie'])) {
                 continue;
             }
             $imdbid = $search->imdbID;
