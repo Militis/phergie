@@ -108,7 +108,11 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
             $this->lastPing = $time;
             if ($status != 'All Mojang services appear to be up.')
             {
-                $this->doPrivmsg($this->getConfig('status.channels'), $status);
+                $channels = explode(',', $this->getConfig('status.channels'));
+                
+                foreach ($channels as $channel) {
+                    $this->doPrivmsg($channel, $status);
+                }
             }
         }
     }
@@ -251,7 +255,7 @@ class Phergie_Plugin_Minecraft extends Phergie_Plugin_Abstract
             
             if ( ! empty($down))
             {
-                return 'The following Mojang Services appear to be down: '.implode(';', $down);
+                return 'The following Mojang Services appear to be down: '.implode('; ', $down);
             }
             
             return 'All Mojang services appear to be up.';

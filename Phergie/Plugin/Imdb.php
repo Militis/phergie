@@ -68,11 +68,17 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
             return;
         }
         
-        $msg = "Search Results:";
-        
-        $this->doPrivmsg($this->event->getSource(), $msg);
+        if (count($json->Search) > 0) {
+            $msg = "Search Results:";
+            $this->doPrivmsg($this->event->getSource(), $msg);
+        } else {
+            $msg = "No Results. :(";
+            $this->doPrivmsg($this->event->getSource(), $msg);
+            return;
+        }
         
         foreach ($json->Search as $search) {
+            print_r($search);
             if ($search->Type != 'series' OR $search->Type != 'movie') {
                 continue;
             }
@@ -84,6 +90,8 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
             
             $this->doPrivmsg($this->event->getSource(), $msg);
         }
+        
+        return;
     }
 
     /**
