@@ -45,7 +45,7 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
     }
 
     /**
-     * Queries the OMDb API, processes the first result, and sends
+     * Queries the OMDb API, processes the result, and sends
      * a message back to the current event source.
      *
      * @param string $query Search term
@@ -57,22 +57,27 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
         $url = 'http://www.omdbapi.com/';
         $params = array(
             'r' => 'json',
-            't' => $query
+            's' => $query
         );
         $http = $this->plugins->getPlugin('Http');
         $response = $http->get($url, $params);
         $json = json_decode($response->getContent());
         
-        if ($json->Response == 'False') {
+        if (property_exists($json, 'Response') AND $json->Response == 'False') {
             $this->doPrivmsg($this->event->getSource(), $json->Error);
             return;
         }
-
-        $imdbid = $json->imdbID;
-        $title = $json->Title;
-        $link = 'http://www.imdb.com/title/' . $imdbid . '/';
         
-        $msg = "[ $link ] $title";
+        $msg = "Results: ";
+        
+        foreach ($json->Search as $search) {
+            $imdbid = $search->imdbID;
+            $title = $search->Title;
+            $link = 'http://www.imdb.com/title/' . $imdbid . '/';
+            
+            $msg .= "[ $link ] $title\n";
+        }
+        
         $this->doPrivmsg($this->event->getSource(), $msg);
     }
 
@@ -85,7 +90,7 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
      */
     public function onCommandImdb($query)
     {
-        $this->queryOmdb($query);
+        $this->queryOmdb(rawurlencode($query));
     }
 
 }
