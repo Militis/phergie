@@ -73,6 +73,9 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
         $this->doPrivmsg($this->event->getSource(), $msg);
         
         foreach ($json->Search as $search) {
+            if ($search->Type != 'series' OR $search->Type != 'movie') {
+                continue;
+            }
             $imdbid = $search->imdbID;
             $title = $search->Title;
             $link = 'http://www.imdb.com/title/' . $imdbid . '/';
