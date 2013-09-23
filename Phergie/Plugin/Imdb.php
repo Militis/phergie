@@ -78,7 +78,8 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
         }
         
         foreach ($json->Search as $search) {
-            print_r($search);
+            var_dump($search->Type != 'series');
+            var_dump($search->Type != 'movie');
             if ($search->Type != 'series' OR $search->Type != 'movie') {
                 continue;
             }
