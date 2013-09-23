@@ -68,17 +68,19 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
             return;
         }
         
-        $msg = "Results: ";
+        $msg = "Search Results:";
+        
+        $this->doPrivmsg($this->event->getSource(), $msg);
         
         foreach ($json->Search as $search) {
             $imdbid = $search->imdbID;
             $title = $search->Title;
             $link = 'http://www.imdb.com/title/' . $imdbid . '/';
             
-            $msg .= "[ $link ] $title\n";
+            $msg = "[ $link ] $title";
+            
+            $this->doPrivmsg($this->event->getSource(), $msg);
         }
-        
-        $this->doPrivmsg($this->event->getSource(), $msg);
     }
 
     /**
