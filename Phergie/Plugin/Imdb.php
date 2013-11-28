@@ -81,11 +81,8 @@ class Phergie_Plugin_Imdb extends Phergie_Plugin_Abstract
             if ( ! in_array($search->Type, ['series', 'movie'])) {
                 continue;
             }
-            $imdbid = $search->imdbID;
-            $title = $search->Title;
-            $link = 'http://www.imdb.com/title/' . $imdbid . '/';
             
-            $msg = "[ $link ] $title";
+            $msg = "[ http://www.imdb.com/title/{$search->imdbID}/ ] {$search->Title} ({$search->Year}) [{$search->Type}]";
             
             $this->doPrivmsg($this->event->getSource(), $msg);
         }
