@@ -49,7 +49,7 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
      */
     public function onCommandRules()
     {
-        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/pages/rules/');
+        $this->doPrivmsg($this->event->getSource(), 'http://mhykol.net/rules/');
     }
 
     /**
@@ -71,7 +71,7 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
      */
     public function onCommandGrief()
     {
-        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/pages/griefreport/');
+        $this->doPrivmsg($this->event->getSource(), 'http://mhykol.net/grief/');
     }
 
     /**
@@ -82,7 +82,7 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
      */
     public function onCommandVip()
     {
-        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/pages/buyrank/');
+        $this->doPrivmsg($this->event->getSource(), 'http://mhykol.net/shop/');
     }
 
     /**
@@ -104,8 +104,7 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
      */
     public function onCommandBanappeal()
     {
-        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/threads/read-before-posting-appeal.1283/');
-        $this->doPrivmsg($this->event->getSource(), 'Create a new topic with your ingame name as the title in this forum: http://mc.mhykol.com/forums/ban-appeals.6/');
+        $this->doPrivmsg($this->event->getSource(), 'http://mhykol.net/appeal/');
     }
     
     /**
@@ -138,7 +137,7 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
      */
     public function onCommandMap()
     {
-        $this->doPrivmsg($this->event->getSource(), 'http://mc.mhykol.com/pages/map/');
+        $this->doPrivmsg($this->event->getSource(), 'http://mhykol.net/maps/');
     }
 
     /**
@@ -153,6 +152,7 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
         $this->doPrivmsg($this->event->getSource(), 'http://twitter.com/mhykol');
         $this->doPrivmsg($this->event->getSource(), 'http://www.facebook.com/mhykolmines');
         $this->doPrivmsg($this->event->getSource(), 'http://www.twitch.tv/mhykol');
+        $this->doPrivmsg($this->event->getSource(), 'http://mhykol.com');
         // $this->doPrivmsg($this->event->getSource(), '');
     }
     
