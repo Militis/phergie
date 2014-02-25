@@ -238,7 +238,7 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
             {
                 if ($key === 'players' || $key === 'ips')
                 {
-                    $clones .= ($key === 'players' ? ucfirst($key).': ' : 'IPs: ').implode(',', $val);
+                    $clones .= ($key === 'players' ? ucfirst($key).': ' : 'IPs: ').implode(',', $val)."\n";
                 }
             }
         }
