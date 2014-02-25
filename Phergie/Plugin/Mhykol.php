@@ -218,7 +218,10 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
 
         $header = $response->getHeaders('Content-Type');
         $matches = preg_match(
-            '#^([application/json|text/html])(?:;.*)?$#',
+            array(
+                '#^(application/json)(?:;.*)?$#',
+                '#^(text/html)(?:;.*)?$#',
+            ),
             $header
         );
         
