@@ -233,21 +233,17 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
         
         if ( ! empty($json))
         {
-            $clones = "Matches:\n";
+            $this->doPrivmsg($this->event->getSource(), "Matches:");
             foreach (get_object_vars($json) as $key => $val)
             {
                 if ($key === 'players' || $key === 'ips')
                 {
-                    $clones .= ($key === 'players' ? ucfirst($key).': ' : 'IPs: ').implode(',', $val)."\n";
+                    $this->doPrivmsg($this->event->getSource(), ($key === 'players' ? ucfirst($key).': ' : 'IPs: ').implode(',', $val));
                 }
             }
         }
-        else
-        {
-            $clones = 'No matches.';
-        }
         
-        $this->doPrivmsg($this->event->getSource(), $clones);
+        $this->doPrivmsg($this->event->getSource(), 'No matches.');
     }
     
     /**
