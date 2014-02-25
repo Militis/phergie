@@ -32,6 +32,11 @@
 class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
 {
     /**
+     * URL for checking Minecraft Clones.
+     */
+    protected $clonesUrl = 'https://nook.bassh.net/query/checkclones/';
+    
+    /**
      * Checks for dependencies.
      *
      * @return void
@@ -176,6 +181,59 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
     public function onCommandUpdate()
     {
         $this->doPrivmsg($this->event->getSource(), 'http://bit.ly/13MH0Jr');
+    }
+    
+    /**
+     * Check for Clones
+     *
+     *
+     * @return void
+     */
+    public function onCommandClone($usename)
+    {
+        $options = array(
+            'timeout' => 3.5,
+            'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.60 Safari/537.11'
+        );
+
+        $response = $this->http->head($this->clonesUrl, array(), $options);
+
+        if ($response->getCode() == 405) { // HEAD request method not allowed
+            $response = $this->http->get($this->clonesUrl, array(), $options);
+        }
+
+        $header = $response->getHeaders('Content-Type');
+        $matches = preg_match(
+            '#^(application/json)(?:;.*)?$#',
+            $header
+        );
+        
+        if ($matches)
+        {
+            $json = json_decode(file_get_contents($this->clonesUrl));
+        }
+        else
+        {
+            $json = array();
+        }
+        
+        if ( ! empty($json))
+        {
+            $clones = "Matches:\n";
+            foreach (get_object_vars($json) as $key => $val)
+            {
+                if ($key === 'players' || $key === 'ips')
+                {
+                    $clones .= ($key === 'players' ? ucfirst($key).': ' : 'IPs: ').implode(',', $val);
+                }
+            }
+        }
+        else
+        {
+            $clones = 'No matches.';
+        }
+        
+        $this->doPrivmsg($this->event->getSource(), $clones);
     }
     
     /**
