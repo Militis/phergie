@@ -242,8 +242,10 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
                 }
             }
         }
-        
-        $this->doPrivmsg($this->event->getSource(), 'No matches.');
+        else
+        {
+            $this->doPrivmsg($this->event->getSource(), 'No matches.');
+        }
     }
     
     /**
