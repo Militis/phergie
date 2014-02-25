@@ -238,7 +238,7 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
             {
                 if ($key === 'players' || $key === 'ips')
                 {
-                    $this->doPrivmsg($this->event->getSource(), ($key === 'players' ? ucfirst($key).': ' : 'IPs: ').implode(',', $val));
+                    $this->doPrivmsg($this->event->getSource(), ($key === 'players' ? ucfirst($key).': ' : 'IPs: ').implode(', ', $val));
                 }
             }
         }
