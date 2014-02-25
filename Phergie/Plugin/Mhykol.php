@@ -32,7 +32,16 @@
 class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
 {
     /**
+     * HTTP plugin
+     *
+     * @var Phergie_Plugin_Http
+     */
+    protected $http;
+    
+    /**
      * URL for checking Minecraft Clones.
+     * 
+     * @var url
      */
     protected $clonesUrl = 'https://nook.bassh.net/query/checkclones/';
     
@@ -44,6 +53,8 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
     public function onLoad()
     {
         $this->getPluginHandler()->getPlugin('Command');
+        $this->plugins->getPlugin('Http');
+        $this->http = $this->plugins->http;
     }
 
     /**
