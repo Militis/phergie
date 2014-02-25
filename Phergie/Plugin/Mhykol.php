@@ -203,15 +203,17 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
      */
     public function onCommandClone($username)
     {
+        $url = $this->clonesUrl.$username;
+        var_dump($url);
         $options = array(
             'timeout' => 3.5,
             'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.60 Safari/537.11'
         );
 
-        $response = $this->http->head($this->clonesUrl.$username, array(), $options);
+        $response = $this->http->head($url, array(), $options);
 
         if ($response->getCode() == 405) { // HEAD request method not allowed
-            $response = $this->http->get($this->clonesUrl.$username, array(), $options);
+            $response = $this->http->get($url, array(), $options);
         }
 
         $header = $response->getHeaders('Content-Type');
@@ -222,7 +224,7 @@ class Phergie_Plugin_Mhykol extends Phergie_Plugin_Abstract
         
         if ($matches)
         {
-            $json = json_decode(file_get_contents($this->clonesUrl.$username));
+            $json = json_decode(file_get_contents($url));
         }
         else
         {
